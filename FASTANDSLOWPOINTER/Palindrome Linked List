@@ -1,45 +1,63 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode RevLL(ListNode curr){
-        ListNode prev=null;
+public class PalindromeLinkedList {
 
-        while(curr!=null){
-            ListNode next=curr.next;
+    public static class ListNode {
+        int val;
+        ListNode next;
 
-            curr.next=prev;
-            prev=curr;
-            curr=next;
+        ListNode() {
         }
-        return prev;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
-    public boolean isPalindrome(ListNode head) {
-        ListNode slow=head,
-        fast=head;
 
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
+    public static class Solution {
+        public ListNode revLL(ListNode curr) {
+            ListNode prev = null;
 
-        ListNode m=RevLL(slow);
-        ListNode n=head;
-
-        while(m!=null && n!=null){
-            if(m.val!=n.val){
-                return false;
+            while (curr != null) {
+                ListNode next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
             }
-            m=m.next;
-            n=n.next;
+            return prev;
         }
-        return true;
+
+        public boolean isPalindrome(ListNode head) {
+            ListNode slow = head, fast = head;
+
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            ListNode m = revLL(slow);
+            ListNode n = head;
+
+            while (m != null && n != null) {
+                if (m.val != n.val) {
+                    return false;
+                }
+                m = m.next;
+                n = n.next;
+            }
+            return true;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example: 1 -> 2 -> 2 -> 1
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(1))));
+
+        Solution solution = new Solution();
+        boolean result = solution.isPalindrome(head);
+        System.out.println("Is palindrome: " + result);
     }
 }
