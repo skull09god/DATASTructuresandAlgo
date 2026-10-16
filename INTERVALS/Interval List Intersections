@@ -5,11 +5,11 @@ class Solution {
         int i=0,
             j=0;
 
-        while (i<firstList.length && j<secondList.length){
+        while (i<firstList.length && j<secondList.length){ 
             int e1=firstList[i][1],
             e2=secondList[j][1],
             s1=firstList[i][0],
-            s2=secondList[j][0];
+            s2=secondList[j][0]; 
 
             if(e2>=s1 && e1>=s2){
                 list.add(new int[]{
