@@ -3,6 +3,7 @@ class Solution {
         Arrays.sort(intervals,(a,b) ->Integer.compare(a[0],b[0]));
         List<int[]> list=new ArrayList<>();
         list.add(intervals[0]);
+        
         for(int i=1;i<intervals.length;i++){
             int[] prev=list.get(list.size()-1);
             int[] curr=intervals[i];
