@@ -5,7 +5,6 @@ class Solution {
             j=0;
 
 
-
         while (i<firstList.length && j<secondList.length){ 
             int e1=firstList[i][1],
             e2=secondList[j][1],
